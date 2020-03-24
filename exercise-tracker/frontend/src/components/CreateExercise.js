@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
 
 class CreateExercise extends Component{
 
@@ -38,8 +39,21 @@ class CreateExercise extends Component{
     onSubmit = (e)=>{
         e.preventDefault();
 
-            const exercise = this.state;
+            const exercise = this.state.user;
             console.log(exercise);
+
+            axios.post('http://localhost:3000/exercises/add', exercise).then(
+                (res)=>{console.log(res.data)}
+            )
+
+            let user = {...this.state.user};
+            user.username = '';
+            user.description = '';
+            user.duration = '';
+            user.date = new Date();
+            this.setState({
+                user
+            })
     }
 
 
@@ -50,21 +64,21 @@ class CreateExercise extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
-                            <form class="add-exercise-form" onSubmit={this.onSubmit} action="">
+                            <form className="add-exercise-form" onSubmit={this.onSubmit} action="">
                                 <div className="form-group">
-                                    <label for="username">Username:</label>
+                                    <label htmlFor="username">Username:</label>
                                     <input type="text" name="username" id="username" onChange={this.onChangeField} value={this.state.user.username} className="form-control"/>
                                 </div>
                                 <div className="form-group">
-                                    <label for="description">Description:</label>
+                                    <label htmlFor="description">Description:</label>
                                     <input type="text" name="description" id="description" onChange={this.onChangeField} value={this.state.user.description} className="form-control"/>
                                 </div>
                                 <div className="form-group">
-                                    <label for="duration">Duration:</label>
+                                    <label htmlFor="duration">Duration:</label>
                                     <input type="text" name="duration" id="duration" onChange={this.onChangeField} value={this.state.user.duration} className="form-control"/>
                                 </div>
                                 <div className="form-group">
-                                    <label for="date">Date:</label>
+                                    <label htmlFor="date">Date:</label>
                                     <div>
                                         <DatePicker selected={this.state.date} onChange={this.onChangeDate} className="form-control"/>
                                     </div>
