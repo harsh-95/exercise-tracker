@@ -12,8 +12,8 @@ class App extends Component{
     render(){
         return(
             <div>
-                <Navbar/>
                 <BrowserRouter>
+                <Navbar/>
                     <Switch>
                         <Route exact path="/" component={ExercisesList} />
                         <Route exact path="/edit/:id" component={EditExercise} />
