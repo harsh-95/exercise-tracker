@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class CreateExercise extends Component{
 
@@ -20,6 +22,14 @@ class CreateExercise extends Component{
         const {name, value} = e.target;
         var user = {...this.state.user};
         user[name] = value;
+        this.setState({
+            user
+        })
+    }
+
+    onChangeDate = (date)=>{
+        let user = {...this.state.user};
+        user.date = date;
         this.setState({
             user
         })
@@ -55,7 +65,9 @@ class CreateExercise extends Component{
                                 </div>
                                 <div className="form-group">
                                     <label for="date">Date:</label>
-                                    <input type="date" name="date" id="date" onChange={this.onChangeField} className="form-control"/>
+                                    <div>
+                                        <DatePicker selected={this.state.date} onChange={this.onChangeDate} className="form-control"/>
+                                    </div>
                                 </div>
                                 <input type="submit" className="btn btn-sucess" value="Submit"/>
                             </form>
