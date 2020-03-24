@@ -19,6 +19,19 @@ class CreateExercise extends Component{
         }
     }
 
+    componentDidMount(){
+        axios.get('http://localhost:3000/users').then(
+            (res)=>{
+                if(res.data.length > 0){
+                    this.setState({
+                        users: res.data.map((user)=>{return user.username}),
+                        username: res.data[0].username
+                    })
+                }
+            }
+        )
+    }
+
     onChangeField = (e)=>{
         const {name, value} = e.target;
         var user = {...this.state.user};
@@ -67,7 +80,11 @@ class CreateExercise extends Component{
                             <form className="add-exercise-form" onSubmit={this.onSubmit} action="">
                                 <div className="form-group">
                                     <label htmlFor="username">Username:</label>
-                                    <input type="text" name="username" id="username" onChange={this.onChangeField} value={this.state.user.username} className="form-control"/>
+                                    <select name="username" id="username" onChange={this.onChangeField} className="form-control">
+                                        {this.state.users.map((user)=>{
+                                            return <option key={user} value={user}>{user}</option> 
+                                        })}
+                                    </select>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="description">Description:</label>
