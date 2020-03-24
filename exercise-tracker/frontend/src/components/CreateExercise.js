@@ -53,15 +53,15 @@ class CreateExercise extends Component{
                             <form class="add-exercise-form" onSubmit={this.onSubmit} action="">
                                 <div className="form-group">
                                     <label for="username">Username:</label>
-                                    <input type="text" name="username" id="username" onChange={this.onChangeField} className="form-control"/>
+                                    <input type="text" name="username" id="username" onChange={this.onChangeField} value={this.state.user.username} className="form-control"/>
                                 </div>
                                 <div className="form-group">
                                     <label for="description">Description:</label>
-                                    <input type="text" name="description" id="description" onChange={this.onChangeField} className="form-control"/>
+                                    <input type="text" name="description" id="description" onChange={this.onChangeField} value={this.state.user.description} className="form-control"/>
                                 </div>
                                 <div className="form-group">
                                     <label for="duration">Duration:</label>
-                                    <input type="text" name="duration" id="duration" onChange={this.onChangeField} className="form-control"/>
+                                    <input type="text" name="duration" id="duration" onChange={this.onChangeField} value={this.state.user.duration} className="form-control"/>
                                 </div>
                                 <div className="form-group">
                                     <label for="date">Date:</label>
