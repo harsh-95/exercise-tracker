@@ -62,7 +62,7 @@ export default class ExercisesList extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-10 mx-auto">
-                    <table className="table" style={{fontSize: "medium"}}>
+                    <table className="table table-responsive-sm" style={{fontSize: "medium"}}>
                         <thead className="thead-light">
                             <tr>
                             <th>Username</th>
