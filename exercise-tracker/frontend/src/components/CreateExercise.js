@@ -23,9 +23,11 @@ class CreateExercise extends Component{
         axios.get('http://localhost:3000/users').then(
             (res)=>{
                 if(res.data.length > 0){
+                    let user = {...this.state.user};
+                    user.username = res.data[0].username;
                     this.setState({
                         users: res.data.map((user)=>{return user.username}),
-                        username: res.data[0].username
+                        user
                     })
                 }
             }
@@ -73,8 +75,8 @@ class CreateExercise extends Component{
     render(){
         return(
             <div>
-                <h3>Create Exercise</h3>
-                <div className="container">
+                <h3 className="text-center my-2">Create Exercise</h3>
+                <div className="container my-5">
                     <div className="row">
                         <div className="col-md-8">
                             <form className="add-exercise-form" onSubmit={this.onSubmit} action="">

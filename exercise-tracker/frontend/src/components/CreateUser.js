@@ -35,13 +35,13 @@ class CreateUser extends Component{
     render(){
         return(
             <div>
-                <h3>Create Exercise</h3>
-                <div className="container">
+                <h3 className="text-center my-2">Create User</h3>
+                <div className="container my-5">
                     <div className="row">
                         <div className="col-md-8">
-                            <form class="add-exercise-form" onSubmit={this.onSubmit} action="">
+                            <form className="add-exercise-form" onSubmit={this.onSubmit} action="">
                                 <div className="form-group">
-                                    <label for="username">Username:</label>
+                                    <label htmlFor="username">Username:</label>
                                     <input type="text" name="username" id="username" onChange={this.onChangeUsername} value={this.state.username} className="form-control"/>
                                 </div>
                                 <input type="submit" className="btn btn-sucess" value="Submit"/>

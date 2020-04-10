@@ -58,8 +58,8 @@ export default class ExercisesList extends Component {
       render() {
         return (
           <div>
-            <h3>Logged Exercises</h3>
-            <div className="container">
+            <h3 className="text-center my-2">Logged Exercises</h3>
+            <div className="container my-5">
                 <div className="row">
                     <div className="col-md-10 mx-auto">
                     <table className="table table-responsive-sm" style={{fontSize: "medium"}}>
