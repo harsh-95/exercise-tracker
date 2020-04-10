@@ -54,6 +54,7 @@ class CreateExercise extends Component{
     onSubmit = (e)=>{
         e.preventDefault();
 
+        if(this.state.user.username && this.state.user.description.trim() && this.state.user.duration.trim() && this.state.user.date){
             const exercise = this.state.user;
             console.log(exercise);
 
@@ -68,7 +69,8 @@ class CreateExercise extends Component{
             user.date = new Date();
             this.setState({
                 user
-            })
+            })            
+        }
     }
 
 
@@ -99,7 +101,7 @@ class CreateExercise extends Component{
                                 <div className="form-group">
                                     <label htmlFor="date">Date:</label>
                                     <div>
-                                        <DatePicker selected={this.state.date} onChange={this.onChangeDate} className="form-control"/>
+                                        <DatePicker selected={this.state.date} onChange={this.onChangeDate} value={this.state.user.date.toLocaleDateString()} className="form-control"/>
                                     </div>
                                 </div>
                                 <input type="submit" className="btn btn-sucess" value="Submit"/>

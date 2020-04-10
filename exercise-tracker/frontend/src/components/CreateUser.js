@@ -19,17 +19,18 @@ class CreateUser extends Component{
 
     onSubmit = (e)=>{
         e.preventDefault();
-
-        const user = this.state;
-        console.log(user);
-
-        axios.post('http://localhost:3000/users/add', user).then(
-            (res)=>{console.log(res.data)}
-        )
-
-        this.setState({
-            username: ''
-        })
+        if(this.state.username.trim()){
+            const user = this.state;
+            console.log(user);
+    
+            axios.post('http://localhost:3000/users/add', user).then(
+                (res)=>{console.log(res.data)}
+            )
+    
+            this.setState({
+                username: ''
+            })
+        }
     }
 
     render(){
